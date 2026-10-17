@@ -10,10 +10,13 @@ if (process.platform === 'win32') {
   } catch (e) {}
 }
 
+// Disable buffering so unhandled database queries don't hang for 10s and crash cron tasks
+mongoose.set('bufferCommands', false);
+
 const connectDB = async () => {
   const uri = env.MONGO_URI;
 
-  if (!uri || uri.includes('<username>') || uri.includes('<password>') || uri === 'mongodb+srv://cluster.mongodb.net') {
+  if (!uri || uri.includes('<username>') || uri.includes('<password>') || uri.includes('cluster.mongodb.net')) {
     console.warn(`[Database Warning] MONGO_URI appears to contain placeholder credentials or is not set in Render Environment Variables.`);
     console.warn(`[Database Action Required] Go to Render Dashboard -> Environment -> Add MONGO_URI with your MongoDB Atlas connection string.`);
     return null;
@@ -21,7 +24,7 @@ const connectDB = async () => {
 
   try {
     const conn = await mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 8000,
+      serverSelectionTimeoutMS: 10000,
     });
     console.log(`[Database] MongoDB Connected: ${conn.connection.host}`);
     return conn;

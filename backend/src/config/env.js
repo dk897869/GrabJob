@@ -4,9 +4,9 @@ dotenv.config();
 module.exports = {
   PORT: process.env.PORT || 5000,
   NODE_ENV: process.env.NODE_ENV || 'development',
-  MONGO_URI: process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/grabjob',
+  MONGO_URI: process.env.MONGO_URI || 'mongodb+srv://traj37753_db_user:pUyEC9hcR1GrNXZU@cluster0.ambv7vo.mongodb.net/grabjob?retryWrites=true&w=majority',
   JWT_SECRET: process.env.JWT_SECRET || 'grabjob_super_secure_jwt_secret_2025_ind!',
-  CLIENT_URL: process.env.CLIENT_URL || 'http://localhost:5173',
+  CLIENT_URL: process.env.CLIENT_URL || 'https://grabjob.onrender.com',
 
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || '',
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || '',

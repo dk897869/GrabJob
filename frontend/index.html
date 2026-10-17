@@ -3,8 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#2563eb" />
+    <title>GrabJob - India's Trusted Job & Walk-in Platform</title>
+
+    <style>
+      /* Hide all variations of Netlify badge, drawer, and injected watermarks */
+      #netlify-badge,
+      .netlify-badge,
+      [data-netlify-badge],
+      iframe[title*="Netlify" i],
+      iframe[src*="netlify" i],
+      a[href*="netlify.com" i][class*="badge" i],
+      div[class*="netlify-badge" i],
+      div[id*="netlify-drawer" i],
+      .netlify-drawer-container,
+      div[class*="netlify" i][style*="fixed"],
+      div[class*="netlify" i][style*="bottom"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        z-index: -9999 !important;
+      }
+    </style>
+
+    <script>
+      // Immediately remove any Netlify injected tags/badges from DOM
+      (function() {
+        function purgeNetlifyBadge() {
+          try {
+            const selectors = [
+              '#netlify-badge',
+              '.netlify-badge',
+              '[data-netlify-badge]',
+              'iframe[title*="Netlify" i]',
+              'iframe[src*="netlify" i]',
+              'a[href*="netlify.com" i]',
+              '[id*="netlify-drawer" i]',
+              '.netlify-drawer-container'
+            ];
+            document.querySelectorAll(selectors.join(',')).forEach(function(el) {
+              if (el && el.parentNode) {
+                el.parentNode.removeChild(el);
+              }
+            });
+
+            // Check any floating button/link containing "Powered by Netlify"
+            const candidates = document.querySelectorAll('div, a, span, button');
+            for (var i = 0; i < candidates.length; i++) {
+              var c = candidates[i];
+              if (c && c.innerText && c.innerText.toLowerCase().includes('powered by netlify')) {
+                if (c.parentNode) {
+                  c.parentNode.removeChild(c);
+                }
+              }
+            }
+          } catch(e) {}
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', purgeNetlifyBadge);
+        } else {
+          purgeNetlifyBadge();
+        }
+        window.addEventListener('load', purgeNetlifyBadge);
+        setInterval(purgeNetlifyBadge, 800);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

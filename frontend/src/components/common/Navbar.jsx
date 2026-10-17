@@ -63,6 +63,7 @@ export default function Navbar() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 {/* Location Pill */}
                 <div
+                  className="desktop-only-nav-item"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -141,7 +142,7 @@ export default function Navbar() {
                     >
                       {user?.name ? user.name.charAt(0).toUpperCase() : 'D'}
                     </div>
-                    <div style={{ textAlign: 'left', lineHeight: 1.2 }}>
+                    <div className="desktop-only-nav-item" style={{ textAlign: 'left', lineHeight: 1.2 }}>
                       <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#0f172a', display: 'block' }}>
                         {user?.name || 'Deepak Kumar'}
                       </span>

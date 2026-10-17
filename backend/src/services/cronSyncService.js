@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Job = require('../models/Job');
 const JobSource = require('../models/JobSource');
 
@@ -208,6 +209,10 @@ const partnerFeeds = {
  */
 const syncAllJobFeeds = async () => {
   if (isSyncInProgress) return syncStats;
+  if (!mongoose.connection || mongoose.connection.readyState !== 1) {
+    console.log('[Job Feed Sync] Skipping sync: Database is not connected yet.');
+    return syncStats;
+  }
   isSyncInProgress = true;
 
   try {

@@ -93,6 +93,11 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Favicon handler to avoid 404 logs on cloud platforms
+app.get('/favicon.ico', (req, res) => {
+  res.status(204).end();
+});
+
 // Mount API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);

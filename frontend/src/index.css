@@ -115,6 +115,31 @@ input, select, textarea {
 /* Mobile Bottom Navigation padding spacer */
 @media (max-width: 768px) {
   body {
-    padding-bottom: 64px;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 12px));
   }
+}
+
+/* ========================================================
+   Hide Netlify Badge / Watermark / Drawer permanently
+   ======================================================== */
+#netlify-badge,
+.netlify-badge,
+[data-netlify-badge],
+iframe[title*="Netlify" i],
+iframe[src*="netlify" i],
+a[href*="netlify.com" i][class*="badge" i],
+div[class*="netlify-badge" i],
+div[id*="netlify-drawer" i],
+.netlify-drawer-container,
+div[class*="netlify" i][style*="fixed"],
+div[class*="netlify" i][style*="bottom"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  z-index: -9999 !important;
 }
