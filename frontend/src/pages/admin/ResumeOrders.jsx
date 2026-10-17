@@ -15,6 +15,7 @@ import {
 import { adminService } from '../../services/adminService';
 import { LoadingSpinner } from '../../components/common/Loading';
 import { formatDate } from '../../utils/formatters';
+import { BACKEND_URL } from '../../utils/constants';
 import toast from 'react-hot-toast';
 
 export default function AdminResumeOrders() {
@@ -164,7 +165,7 @@ export default function AdminResumeOrders() {
                         {r.paymentScreenshot ? (
                           <button
                             type="button"
-                            onClick={() => setSelectedScreenshot(`http://localhost:5000${r.paymentScreenshot}`)}
+                            onClick={() => setSelectedScreenshot(`${BACKEND_URL}${r.paymentScreenshot}`)}
                             className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:underline"
                           >
                             <Eye size={12} /> View Slip
@@ -231,7 +232,7 @@ export default function AdminResumeOrders() {
 
                           {isVerified && r.generatedPdfUrl && (
                             <a
-                              href={`http://localhost:5000${r.generatedPdfUrl}`}
+                              href={`${BACKEND_URL}${r.generatedPdfUrl}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="px-3 py-1 bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 rounded-lg text-xs font-bold transition flex items-center gap-1"

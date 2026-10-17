@@ -1,4 +1,5 @@
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://grabjob.onrender.com/api';
+export const BACKEND_URL = API_BASE_URL.replace(/\/api\/?$/, '');
 export const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '188962680735-u57he0umbhp9juopsct28iinm6v0ifvi.apps.googleusercontent.com';
 export const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID || '';
 
