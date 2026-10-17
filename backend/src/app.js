@@ -75,6 +75,16 @@ if (env.NODE_ENV !== 'production') {
 // Serve uploaded files statically
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
+// Root endpoint & Render health ping
+app.all('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'GrabJob API Server is live and healthy',
+    environment: env.NODE_ENV,
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({
